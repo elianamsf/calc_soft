@@ -1,3 +1,4 @@
+import 'package:calc_soft/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -24,6 +25,11 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                  width: 200,
+                  height: 200,
+                  child: Image.asset('assets/images/logo2.png'),
+                ),
                 TextField(
                   onChanged: (value) {
                     email = value;
@@ -46,11 +52,19 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     if (email == 'eliana.m@email.com' && password == '123') {
                       print('corretinho');
+                      Navigator.of(context).pushReplacementNamed('/home');
                     } else {
                       print('erradinho');
                     }
                   },
                   child: const Text('Sing In'),
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/pessoal');
+                  },
+                  child: const Text('Sing Up'),
                 ),
               ],
             ),

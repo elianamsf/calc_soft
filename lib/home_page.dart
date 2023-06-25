@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'app_controller.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
   @override
   State<HomePage> createState() {
     return HomePageState();
@@ -18,29 +16,29 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Calc Soft"),
+        title: Text("Calc Soft"),
         iconTheme: const IconThemeData(),
-        actions: const [
+        actions: [
           CustomSwitch(),
         ],
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text('Contador: $counter'),
-          const CustomSwitch(),
+          CustomSwitch(),
           Row(
             children: const [
-              CustomSwitch(),
-              CustomSwitch(),
-              CustomSwitch(),
+              Text('Oi '),
+              Text('Linda!'),
+              Text('Você consegue!'),
             ],
           )
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
         onPressed: () {
           setState(() {
             counter++;
@@ -52,7 +50,7 @@ class HomePageState extends State<HomePage> {
 }
 
 class CustomSwitch extends StatelessWidget {
-  const CustomSwitch({super.key});
+  //const CustomSwitch({super.key});
 
   @override
   Widget build(BuildContext context) {
