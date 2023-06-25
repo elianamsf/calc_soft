@@ -13,81 +13,104 @@ class AccessRegisterPage extends StatefulWidget {
 class _AccessRegisterPageState extends State<AccessRegisterPage> {
   String email = '';
   String password = '';
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Calc Soft"),
-        iconTheme: const IconThemeData(),
-        actions: [],
-      ),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 150,
-                  height: 150,
-                  child: Image.asset('assets/images/logo2.png'),
+
+  _appBar() {
+    return AppBar(
+      title: Text("Register Access Data"),
+      iconTheme: const IconThemeData(),
+      actions: [],
+    );
+  }
+
+  Widget _body() {
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 130,
+                height: 130,
+                child: Image.asset('assets/images/logo2.png'),
+              ),
+              TextField(
+                onChanged: (value) {
+                  email = value;
+                },
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                    labelText: 'Email Address', border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                onChanged: (value) {
+                  email = value;
+                },
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                    labelText: 'Repeat Email Address',
+                    border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                onChanged: (value) {
+                  password = value;
+                },
+                obscureText: true,
+                decoration: const InputDecoration(
+                    labelText: 'Password', border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                onChanged: (value) {
+                  password = value;
+                },
+                obscureText: true,
+                decoration: const InputDecoration(
+                    labelText: 'Repeat Password', border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtonBar(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushReplacementNamed('/pessoal');
+                          },
+                          child: const Text('Previous'),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushReplacementNamed('/home');
+                          },
+                          child: const Text('Sing Up'),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-                TextField(
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                      labelText: 'Email Address', border: OutlineInputBorder()),
-                ),
-                TextField(
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                      labelText: 'Repeat Email Address',
-                      border: OutlineInputBorder()),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                      labelText: 'Password', border: OutlineInputBorder()),
-                ),
-                TextField(
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                      labelText: 'Repeat Password',
-                      border: OutlineInputBorder()),
-                ),
-                const SizedBox(height: 8),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/home');
-                  },
-                  child: const Text('Sing Up'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/pessoal');
-                  },
-                  child: const Text('Previous'),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: _appBar(),
+      body: _body(),
     );
   }
 }

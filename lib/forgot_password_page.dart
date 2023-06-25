@@ -1,19 +1,24 @@
-import 'package:calc_soft/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   String email = '';
-  String password = '';
-  @override
+  _appBar() {
+    return AppBar(
+      title: Text("Reset Password"),
+      iconTheme: const IconThemeData(),
+      actions: [],
+    );
+  }
+
   Widget _body() {
     return SingleChildScrollView(
       child: SizedBox(
@@ -25,8 +30,8 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 200,
-                height: 200,
+                width: 150,
+                height: 150,
                 child: Image.asset('assets/images/logo2.png'),
               ),
               TextField(
@@ -38,51 +43,24 @@ class _LoginPageState extends State<LoginPage> {
                     labelText: 'Email Address', border: OutlineInputBorder()),
               ),
               const SizedBox(height: 8),
-              TextField(
-                onChanged: (value) {
-                  password = value;
-                },
-                obscureText: true,
-                decoration: const InputDecoration(
-                    labelText: 'Password', border: OutlineInputBorder()),
-              ),
-              const SizedBox(height: 8),
               SizedBox(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ButtonBar(
                       children: [
-                        TextButton(
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/forgotPassword');
-                            },
-                            child: const Text('I forgot my password'))
-                      ],
-                    ),
-                    ButtonBar(
-                      children: [
                         ElevatedButton(
                           onPressed: () {
-                            if (email == 'eliana.m@email.com' &&
-                                password == '123') {
-                              print('corretinho');
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/home');
-                            } else {
-                              print('erradinho');
-                            }
+                            Navigator.of(context).pushReplacementNamed('/');
                           },
-                          child: const Text('Sing In'),
+                          child: const Text('Previous'),
                         ),
                         const SizedBox(height: 8),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context)
-                                .pushReplacementNamed('/pessoal');
+                            Navigator.of(context).pushReplacementNamed('/');
                           },
-                          child: const Text('Sing Up'),
+                          child: const Text('Reset password'),
                         ),
                       ],
                     )
@@ -96,8 +74,10 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _appBar(),
       body: _body(),
     );
   }
