@@ -49,48 +49,50 @@ class HomePageState extends State<HomePage> {
     );
   }
 
+  _drawer() {
+    return Drawer(
+      child: Column(
+        children: [
+          const UserAccountsDrawerHeader(
+            currentAccountPicture: ClipOval(
+              child: Icon(Icons.person_outline_outlined),
+            ),
+            accountName: Text('Eliana França'),
+            accountEmail: Text('eliana.m@email.com'),
+          ),
+          CustomSwitch(),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text('Home'),
+            subtitle: const Text('Go Home'),
+            onTap: () => Navigator.of(context).pushReplacementNamed('/home'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.create),
+            title: const Text('Create'),
+            subtitle: const Text('Calculate Estimate'),
+            onTap: () => Navigator.of(context).pushReplacementNamed('/create'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.history),
+            title: const Text('History'),
+            subtitle: const Text('Estimate history'),
+            onTap: () => Navigator.of(context).pushReplacementNamed('/history'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Logout'),
+            subtitle: const Text('End Session'),
+            onTap: () => Navigator.of(context).pushReplacementNamed('/'),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Column(
-          children: [
-            const UserAccountsDrawerHeader(
-              currentAccountPicture: ClipOval(
-                child: Icon(Icons.person_outline_outlined),
-              ),
-              accountName: Text('Eliana França'),
-              accountEmail: Text('eliana.m@email.com'),
-            ),
-            CustomSwitch(),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              subtitle: const Text('Go Home'),
-              onTap: () => Navigator.of(context).pushReplacementNamed('/home'),
-            ),
-            ListTile(
-              leading: const Icon(Icons.create),
-              title: const Text('Create'),
-              subtitle: const Text('Calculate Estimate'),
-              onTap: () =>
-                  Navigator.of(context).pushReplacementNamed('/create'),
-            ),
-            ListTile(
-              leading: const Icon(Icons.history),
-              title: const Text('History'),
-              subtitle: const Text('Estimate history'),
-              onTap: () =>
-                  Navigator.of(context).pushReplacementNamed('/history'),
-            ),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Logout'),
-              subtitle: const Text('End Session'),
-              onTap: () => Navigator.of(context).pushReplacementNamed('/'),
-            ),
-          ],
-        ),
-      ),
+      drawer: _drawer(),
       appBar: _appBar(),
       body: _body(),
       floatingActionButton: _floatingActionButton(),
