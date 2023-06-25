@@ -18,18 +18,25 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Calc Soft"),
+        title: const Text("Calc Soft"),
         iconTheme: const IconThemeData(),
-        actions: [
+        actions: const [
           CustomSwitch(),
         ],
       ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        child: Column(children: [
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text('Contador: $counter'),
-          CustomSwitch(),
+          const CustomSwitch(),
+          Row(
+            children: const [
+              CustomSwitch(),
+              CustomSwitch(),
+              CustomSwitch(),
+            ],
+          )
         ]),
       ),
       floatingActionButton: FloatingActionButton(
@@ -45,6 +52,8 @@ class HomePageState extends State<HomePage> {
 }
 
 class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Switch(
