@@ -1,7 +1,4 @@
-import 'package:calc_soft/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class AccessRegisterPage extends StatefulWidget {
   const AccessRegisterPage({super.key});
@@ -13,6 +10,8 @@ class AccessRegisterPage extends StatefulWidget {
 class _AccessRegisterPageState extends State<AccessRegisterPage> {
   String email = '';
   String password = '';
+  String reEmail = '';
+  String rePassword = '';
 
   _appBar() {
     return AppBar(
@@ -48,7 +47,7 @@ class _AccessRegisterPageState extends State<AccessRegisterPage> {
               const SizedBox(height: 8),
               TextField(
                 onChanged: (value) {
-                  email = value;
+                  reEmail = value;
                 },
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
@@ -67,7 +66,7 @@ class _AccessRegisterPageState extends State<AccessRegisterPage> {
               const SizedBox(height: 8),
               TextField(
                 onChanged: (value) {
-                  password = value;
+                  rePassword = value;
                 },
                 obscureText: true,
                 decoration: const InputDecoration(
@@ -109,8 +108,11 @@ class _AccessRegisterPageState extends State<AccessRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
-      body: _body(),
-    );
+        appBar: _appBar(),
+        body: Stack(
+          children: [
+            _body(),
+          ],
+        ));
   }
 }

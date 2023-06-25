@@ -1,7 +1,4 @@
-import 'package:calc_soft/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class PessoalPage extends StatefulWidget {
   const PessoalPage({super.key});
@@ -11,12 +8,12 @@ class PessoalPage extends StatefulWidget {
 }
 
 class _PessoalPageState extends State<PessoalPage> {
-  String email = '';
-  String password = '';
+  String firstName = '';
+  String lastName = '';
 
   _appBar() {
     return AppBar(
-      title: Text("Register Pessoal Data"),
+      title: const Text("Register Pessoal Data"),
       iconTheme: const IconThemeData(),
       actions: [],
     );
@@ -39,7 +36,7 @@ class _PessoalPageState extends State<PessoalPage> {
               ),
               TextField(
                 onChanged: (value) {
-                  email = value;
+                  firstName = value;
                 },
                 keyboardType: TextInputType.name,
                 decoration: const InputDecoration(
@@ -48,29 +45,11 @@ class _PessoalPageState extends State<PessoalPage> {
               const SizedBox(height: 8),
               TextField(
                 onChanged: (value) {
-                  email = value;
+                  lastName = value;
                 },
                 keyboardType: TextInputType.name,
                 decoration: const InputDecoration(
                     labelText: 'Last Name', border: OutlineInputBorder()),
-              ),
-              const SizedBox(height: 8),
-              TextField(
-                onChanged: (value) {
-                  password = value;
-                },
-                keyboardType: TextInputType.datetime,
-                decoration: const InputDecoration(
-                    labelText: 'Date of birth', border: OutlineInputBorder()),
-              ),
-              const SizedBox(height: 8),
-              TextField(
-                onChanged: (value) {
-                  password = value;
-                },
-                keyboardType: TextInputType.multiline,
-                decoration: const InputDecoration(
-                    labelText: 'Function', border: OutlineInputBorder()),
               ),
               const SizedBox(height: 8),
               SizedBox(
@@ -108,8 +87,11 @@ class _PessoalPageState extends State<PessoalPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
-      body: _body(),
-    );
+        appBar: _appBar(),
+        body: Stack(
+          children: [
+            _body(),
+          ],
+        ));
   }
 }
