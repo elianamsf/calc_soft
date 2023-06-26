@@ -14,20 +14,53 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget _body() {
-    return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text('Contador: $counter'),
-        Row(
-          children: const [
-            Text('Oi '),
-            Text('Linda!'),
-            Text('Você consegue!'),
+    return //SingleChildScrollView(
+        //child:
+        SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 300,
+              height: 300,
+              child: Image.asset('assets/images/logo3.png'),
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ButtonBar(
+                    alignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacementNamed('/create');
+                        },
+                        child: const Text('Create'),
+                      ),
+                      const SizedBox(height: 8),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed('/history');
+                        },
+                        child: const Text('History'),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
           ],
-        )
-      ]),
+        ),
+      ),
     );
+    //);
   }
 
   _floatingActionButton() {
@@ -35,7 +68,7 @@ class HomePageState extends State<HomePage> {
       child: Icon(Icons.add),
       onPressed: () {
         setState(() {
-          counter++;
+          Navigator.of(context).pushReplacementNamed('/create');
         });
       },
     );
@@ -94,8 +127,13 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: _drawer(),
       appBar: _appBar(),
-      body: _body(),
-      floatingActionButton: _floatingActionButton(),
+      body: Stack(
+        children: [
+          Container(color: Color.fromRGBO(126, 217, 87, 1.0)),
+          _body(),
+        ],
+      ),
+      //floatingActionButton: _floatingActionButton(),
     );
   }
 }

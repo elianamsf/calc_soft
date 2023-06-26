@@ -1,9 +1,11 @@
 import 'package:calc_soft/pessoal_register_page.dart';
+import 'package:calc_soft/view_item_page.dart';
 import 'package:flutter/material.dart';
 
 import 'app_controller.dart';
 import 'access_register_page.dart';
 import 'create_page.dart';
+import 'edit_item_page.dart';
 import 'forgot_password_page.dart';
 import 'history_page.dart';
 import 'home_page.dart';
@@ -30,6 +32,8 @@ class AppWidget extends StatelessWidget {
             '/forgotPassword': (context) => ForgotPasswordPage(),
             '/history': (context) => HistoryPage(),
             '/create': (context) => CreatePage(),
+            '/viewItem': (context) => ViewPage(),
+            '/editItem': (context) => EditPage(),
           },
         );
       },

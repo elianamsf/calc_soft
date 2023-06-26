@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import 'app_controller.dart';
 
@@ -12,6 +10,8 @@ class CreatePage extends StatefulWidget {
 }
 
 class _CreatePageState extends State<CreatePage> {
+  String email = '';
+
   @override
   _appBar() {
     return AppBar(
@@ -62,11 +62,92 @@ class _CreatePageState extends State<CreatePage> {
     );
   }
 
+  _floatingActionButton() {
+    return FloatingActionButton(
+      child: Icon(Icons.delete),
+      onPressed: () {
+        setState(() {
+          //Navigator.of(context).pushReplacementNamed('/create');
+        });
+      },
+    );
+  }
+
   Widget _body() {
-    return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: []),
+    final List<String> entries = <String>[
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I'
+    ];
+    final List<int> colorCodes = <int>[
+      900,
+      800,
+      700,
+      600,
+      500,
+      400,
+      300,
+      200,
+      100
+    ];
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 150,
+                height: 150,
+                child: Image.asset('assets/images/logo2.png'),
+              ),
+              TextField(
+                onChanged: (value) {
+                  email = value;
+                },
+                keyboardType: TextInputType.name,
+                decoration: const InputDecoration(
+                    labelText: 'Requirement Name',
+                    border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtonBar(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushReplacementNamed('/home');
+                          },
+                          child: const Text('Home'),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            //Navigator.of(context).pushReplacementNamed('/home');
+                          },
+                          child: const Text('Create'),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -75,6 +156,7 @@ class _CreatePageState extends State<CreatePage> {
       drawer: _drawer(),
       appBar: _appBar(),
       body: _body(),
+      //floatingActionButton: _floatingActionButton(),
     );
   }
 }

@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
 import 'app_controller.dart';
 
-class HistoryPage extends StatefulWidget {
-  const HistoryPage({super.key});
+class ViewPage extends StatefulWidget {
+  const ViewPage({super.key});
 
   @override
-  _HistoryPageState createState() => _HistoryPageState();
+  _ViewPageState createState() => _ViewPageState();
 }
 
-class _HistoryPageState extends State<HistoryPage> {
+class _ViewPageState extends State<ViewPage> {
+  String email = '';
+
   @override
   _appBar() {
     return AppBar(
-      title: Text("History"),
+      title: Text("Edit Item"),
       iconTheme: const IconThemeData(),
       actions: [],
     );
@@ -61,56 +65,57 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   Widget _body() {
-    final List<String> entries = <String>[
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I'
-    ];
-    final List<int> colorCodes = <int>[
-      900,
-      800,
-      700,
-      600,
-      500,
-      400,
-      300,
-      200,
-      100
-    ];
-    return SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: ListView.separated(
-          padding: const EdgeInsets.all(8),
-          itemCount: entries.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              leading: const Icon(Icons.calculate),
-              title: Text('Entry ${entries[index]}'),
-              subtitle: Text('Entry ${entries[index]}'),
-              onTap: () =>
-                  Navigator.of(context).pushReplacementNamed('/viewItem'),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-        ));
-  }
-
-  _floatingActionButton() {
-    return FloatingActionButton(
-      child: Icon(Icons.keyboard_backspace_outlined),
-      onPressed: () {
-        setState(() {
-          Navigator.of(context).pushReplacementNamed('/home');
-        });
-      },
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 150,
+                height: 150,
+                child: Image.asset('assets/images/logo2.png'),
+              ),
+              TextField(
+                onChanged: (value) {
+                  email = value;
+                },
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                    labelText: 'Email Address', border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtonBar(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushReplacementNamed('/');
+                          },
+                          child: const Text('Previous'),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushReplacementNamed('/');
+                          },
+                          child: const Text('Reset password'),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -119,7 +124,6 @@ class _HistoryPageState extends State<HistoryPage> {
       drawer: _drawer(),
       appBar: _appBar(),
       body: _body(),
-      floatingActionButton: _floatingActionButton(),
     );
   }
 }

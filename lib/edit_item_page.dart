@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
 import 'app_controller.dart';
 
-class HistoryPage extends StatefulWidget {
-  const HistoryPage({super.key});
+class EditPage extends StatefulWidget {
+  const EditPage({super.key});
 
   @override
-  _HistoryPageState createState() => _HistoryPageState();
+  _EditPageState createState() => _EditPageState();
 }
 
-class _HistoryPageState extends State<HistoryPage> {
+class _EditPageState extends State<EditPage> {
   @override
   _appBar() {
     return AppBar(
-      title: Text("History"),
+      title: Text("Edit Item"),
       iconTheme: const IconThemeData(),
       actions: [],
     );
@@ -60,66 +62,11 @@ class _HistoryPageState extends State<HistoryPage> {
     );
   }
 
-  Widget _body() {
-    final List<String> entries = <String>[
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I'
-    ];
-    final List<int> colorCodes = <int>[
-      900,
-      800,
-      700,
-      600,
-      500,
-      400,
-      300,
-      200,
-      100
-    ];
-    return SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: ListView.separated(
-          padding: const EdgeInsets.all(8),
-          itemCount: entries.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              leading: const Icon(Icons.calculate),
-              title: Text('Entry ${entries[index]}'),
-              subtitle: Text('Entry ${entries[index]}'),
-              onTap: () =>
-                  Navigator.of(context).pushReplacementNamed('/viewItem'),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-        ));
-  }
-
-  _floatingActionButton() {
-    return FloatingActionButton(
-      child: Icon(Icons.keyboard_backspace_outlined),
-      onPressed: () {
-        setState(() {
-          Navigator.of(context).pushReplacementNamed('/home');
-        });
-      },
-    );
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: _drawer(),
       appBar: _appBar(),
-      body: _body(),
-      floatingActionButton: _floatingActionButton(),
+      //body: _body(),
     );
   }
 }

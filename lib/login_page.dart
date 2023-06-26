@@ -48,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                           password = value;
                         },
                         obscureText: true,
+                        keyboardType: TextInputType.visiblePassword,
                         decoration: const InputDecoration(
                             labelText: 'Password',
                             border: OutlineInputBorder()),
