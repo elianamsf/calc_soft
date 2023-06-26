@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1006100055555",
+    "project_id": "calcsoft-e2f4f",
+    "storage_bucket": "calcsoft-e2f4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006100055555:android:4688e76af04fbc2b857036",
+        "android_client_info": {
+          "package_name": "com.example.calc_soft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006100055555-h6rgi8pgao644humi7sl0oatur6iog81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYyx6C5ChEJcdMKQslkDeWFU2p3Golj_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006100055555-h6rgi8pgao644humi7sl0oatur6iog81.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1006100055555-pmos1qoogl95s9g83s03lva75vg9i1qk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.calcSoft"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
